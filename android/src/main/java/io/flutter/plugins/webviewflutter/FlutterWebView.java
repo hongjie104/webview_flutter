@@ -4,6 +4,8 @@
 
 package io.flutter.plugins.webviewflutter;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
@@ -111,7 +113,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
         public void onDownloadStart(String url, String s1, String s2, String s3, long l) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            activity.startActivity(intent);
+            WebViewFlutterPlugin.registrar.activity().startActivity(intent);
         }
     });
 

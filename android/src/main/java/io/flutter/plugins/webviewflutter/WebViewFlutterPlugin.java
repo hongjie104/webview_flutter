@@ -17,6 +17,8 @@ import io.flutter.plugin.common.BinaryMessenger;
  */
 public class WebViewFlutterPlugin implements FlutterPlugin {
 
+  public static PluginRegistry.Registrar registrar;
+
   private FlutterCookieManager flutterCookieManager;
 
   /**
@@ -42,6 +44,7 @@ public class WebViewFlutterPlugin implements FlutterPlugin {
    */
   @SuppressWarnings("deprecation")
   public static void registerWith(io.flutter.plugin.common.PluginRegistry.Registrar registrar) {
+    WebViewFlutterPlugin.registrar = registrar;
     registrar
         .platformViewRegistry()
         .registerViewFactory(
