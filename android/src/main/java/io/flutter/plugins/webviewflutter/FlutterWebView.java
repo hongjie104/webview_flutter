@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -104,6 +105,15 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
     }
+
+    webView.setDownloadListener(new DownloadListener() {
+        @Override
+        public void onDownloadStart(String url, String s1, String s2, String s3, long l) {
+            Uri uri = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            activity.startActivity(intent);
+        }
+    });
 
     methodChannel = new MethodChannel(messenger, "plugins.flutter.io/webview_" + id);
     methodChannel.setMethodCallHandler(this);
