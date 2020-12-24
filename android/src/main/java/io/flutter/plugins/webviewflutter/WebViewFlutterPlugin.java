@@ -17,7 +17,7 @@ import io.flutter.plugin.common.BinaryMessenger;
  */
 public class WebViewFlutterPlugin implements FlutterPlugin {
 
-  public static PluginRegistry.Registrar registrar;
+  public static io.flutter.plugin.common.PluginRegistry.Registrar registrar;
 
   private FlutterCookieManager flutterCookieManager;
 
