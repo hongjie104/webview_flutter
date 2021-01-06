@@ -19,6 +19,8 @@ public class WebViewFlutterPlugin implements FlutterPlugin {
 
   public static io.flutter.plugin.common.PluginRegistry.Registrar registrar;
 
+  public static Context context;
+
   private FlutterCookieManager flutterCookieManager;
 
   /**
@@ -55,6 +57,7 @@ public class WebViewFlutterPlugin implements FlutterPlugin {
 
   @Override
   public void onAttachedToEngine(FlutterPluginBinding binding) {
+    WebViewFlutterPlugin.context = binding.getApplicationContext();
     BinaryMessenger messenger = binding.getBinaryMessenger();
     binding
         .getPlatformViewRegistry()
