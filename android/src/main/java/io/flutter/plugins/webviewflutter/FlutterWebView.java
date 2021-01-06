@@ -113,7 +113,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
         public void onDownloadStart(String url, String s1, String s2, String s3, long l) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            WebViewFlutterPlugin.registrar.activity().startActivity(intent);
+            WebViewFlutterPlugin.registrar.context().startActivity(intent);
         }
     });
 
